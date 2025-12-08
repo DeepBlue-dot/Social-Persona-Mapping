@@ -1,0 +1,44 @@
+# --- Core Backend ---
+fastapi
+uvicorn[standard]
+python-dotenv
+
+# --- Data Processing ---
+numpy
+pandas
+scikit-learn
+joblib
+
+# --- NLP (text embeddings, stylometry) ---
+transformers
+sentencepiece
+datasets
+
+# --- Deep Learning (for embeddings + models) ---
+torch
+torchvision
+torchaudio
+
+# --- Image Processing & Similarity ---
+opencv-python
+Pillow
+insightface
+open_clip_torch
+
+# --- Graph Analysis ---
+networkx
+python-louvain
+igraph
+nodevectors
+
+# --- Neo4j Graph Database Driver ---
+neo4j
+
+# --- Utility / Helpers ---
+tqdm
+requests
+beautifulsoup4
+aiohttp
+
+# --- Optional: Caching & Message Queue ---
+redis
