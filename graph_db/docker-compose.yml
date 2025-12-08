@@ -7,28 +7,28 @@ services:
     restart: unless-stopped
 
     ports:
-      - "7474:7474"   # Browser GUI
-      - "7687:7687"   # Bolt protocol
+      - "7474:7474"
+      - "7687:7687"
 
     environment:
-      # --- Authentication ---
+      # Authentication
       NEO4J_AUTH: "neo4j/password123"
 
-      # --- Enable APOC plugins ---
-      NEO4JLABS_PLUGINS: '["apoc", "graph-data-science"]'
+      # Updated plugin variable name (Neo4j 5)
+      NEO4J_PLUGINS: '["apoc", "graph-data-science"]'
+
+      # Enable APOC file operations
       NEO4J_apoc_export_file_enabled: "true"
       NEO4J_apoc_import_file_enabled: "true"
+      NEO4J_apoc_import_file_use__neo4j__config: "true"
 
-      # Required for APOC to read/write
-      NEO4J_dbms_security_allow_csv_import_from_file_urls: "true"
+      # Allow unrestricted access to apoc.* and gds.*
+      NEO4J_dbms_security_procedures_unrestricted: "apoc.*,gds.*"
 
-      # --- Memory & Performance ---
+      # Memory settings
       NEO4J_dbms_memory_heap_initial__size: "1G"
       NEO4J_dbms_memory_heap_max__size: "2G"
       NEO4J_dbms_memory_pagecache_size: "1G"
-
-      # --- Data & Logs ---
-      NEO4J_dbms_logs_debug_level: "INFO"
 
     volumes:
       - neo4j_data:/data
